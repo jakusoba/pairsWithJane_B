@@ -44,14 +44,16 @@ public class PostageCalculator {
 		list.add(spuNextDay);
 		list.add(fexEd);
 		
-		System.out.println("Delivery Method                        $ cost");
+		System.out.println(String.format("%-25s %20s", "Delivery Method", "$ cost"));
 		System.out.println("----------------------------------------------");
 		
 
 		for(DeliveryDriver service: list) {
 			DecimalFormat dec = new DecimalFormat("#.##");
+			String rateString = String.valueOf(dec.format(service.calculateRate(distance, weight)));
 			service.toString();
-			System.out.println(service.toString() + "                 " + dec.format(service.calculateRate(distance, weight)));
+			System.out.println(String.format("%-25s %20s", service.toString(), rateString));
+			
 		}
 		
 		
